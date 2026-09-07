@@ -1121,7 +1121,7 @@ const allBranches = Object.keys(branchToRegion).sort((a,b)=>a.localeCompare(b));
 let state = {
   regional: REGION_ALL,
   cabang: CABANG_ALL,
-  mapelMulti: [mapelCols[0]],
+  mapelMulti: [...mapelCols],
   activeTab: 'ringkasan',
   sortKeyCabang: null,
   sortDirCabang: 'desc',
@@ -1178,6 +1178,7 @@ function syncMsCheckboxes() {
 }
 function updateMsLabel() {
   if (state.mapelMulti.length === 0) msToggleLabel.textContent = 'Pilih mapel…';
+  else if (state.mapelMulti.length === mapelCols.length) msToggleLabel.textContent = 'Semua mapel dipilih';
   else if (state.mapelMulti.length === 1) msToggleLabel.textContent = mapelLabels[state.mapelMulti[0]] || state.mapelMulti[0];
   else msToggleLabel.textContent = `${state.mapelMulti.length} mapel dipilih`;
 }
